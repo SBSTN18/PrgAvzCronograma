@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+  <h1>Gestión de Actividades</h1>
+
+  <!-- Crear actividad -->
+  <h2>Crear Actividad</h2>
+  <form id="actividadForm">
+    <input type="text" id="titulo" placeholder="Título" required><br>
+    <input type="text" id="descripcion" placeholder="Descripción" required><br>
+    <input type="date" id="fechaInicio" required><br>
+    <input type="date" id="fechaFin" required><br>
+    <input type="text" id="tipoActividad" placeholder="Tipo" required><br>
+    <input type="number" id="idQuehacer" placeholder="Id Quehacer" required><br>
+    <input type="number" id="idTutor" placeholder="Id Tutor" required><br>
+    <input type="number" id="idHijo" placeholder="Id Hijo" required><br>
+    <button type="submit">Crear</button>
+  </form>
+
+  <!-- Consultar todas -->
+  <h2>Consultar Actividades</h2>
+  <button id="consultarBtn">Ver todas</button>
+
+  <!-- Modificar actividad -->
+  <h2>Modificar Actividad</h2>
+  <form id="modificarForm">
+    <input type="number" id="modId" placeholder="ID Actividad" required><br>
+    <input type="text" id="modTitulo" placeholder="Nuevo Título"><br>
+    <input type="text" id="modDescripcion" placeholder="Nueva Descripción"><br>
+    <input type="date" id="modFechaInicio"><br>
+    <input type="date" id="modFechaFin"><br>
+    <input type="text" id="modTipoActividad" placeholder="Nuevo Tipo"><br>
+    <input type="number" id="modIdQuehacer" placeholder="Nuevo Id Quehacer"><br>
+    <input type="number" id="modIdTutor" placeholder="Nuevo Id Tutor"><br>
+    <input type="number" id="modIdHijo" placeholder="Nuevo Id Hijo"><br>
+    <button type="submit">Modificar</button>
+  </form>
+
+  <!-- Borrar actividad -->
+  <h2>Borrar Actividad</h2>
+  <form id="borrarForm">
+    <input type="number" id="borrarId" placeholder="ID Actividad" required><br>
+    <button type="submit">Borrar</button>
+  </form>
+
+  <!-- Resultados -->
+  <div id="resultado"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
