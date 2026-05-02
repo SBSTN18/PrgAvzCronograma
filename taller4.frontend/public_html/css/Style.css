@@ -1,0 +1,98 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 1 may 2026, 11:04:44
+    Author     : User
+*/
+body {
+  background-color: #1c054f;
+  margin: 0;
+  font-family: sans-serif
+}
+
+.barrasuperior {
+  display: flex;
+  background-color: #120332;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #cba6f7;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.menu-items {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.menu-btn {
+  justify-content: center;
+  display: flex;
+  font-size: larger;
+  text-align: center;
+  min-width: 10rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  color: #cba6f7;
+  border-color: transparent;
+  background-color: transparent;
+  margin-top: 0.7rem;
+}
+
+.btn {
+  justify-content: flex-start;
+  font-size: larger;
+  min-width: 10rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #cba6f7;
+  border-color: #cba6f7;
+  background-color: transparent;
+  margin-top: 2rem;
+}
+
+.btn:hover {
+  background-color: #cba6f7;
+  color: #1c054f;
+}
+
+h1 {
+  color: #cba6f7;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.intro {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: #cba6f7;
+  text-align: center;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.imagen {
+  width: 50rem;
+  height: auto;
+  margin-left: 2rem;
+  margin-right: 6rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(33, 0, 48, 0.5);
+}
+
