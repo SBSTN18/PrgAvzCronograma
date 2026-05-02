@@ -6,6 +6,41 @@
         <link rel="stylesheet" href="css/Style.css">
     </head>
     <body>
-        AJAJAJAJ
+        <header>
+            <nav class="barrasuperior">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo de Organizador de Labores" class="logo-img">
+                </div>
+                
+                <div class="menu-items">
+                    <button class="menu-btn" id="contacto">Consultar Actividades</button>
+                    <button class="menu-btn" id="inicio">Añadir Actividad</button>
+                    <button class="menu-btn" id="info">Ajustes</button>
+                    
+                </div>
+                
+                <div class="botones">
+                    <img src="img/perfil.png" alt="Perfil" class="perfil-img">  
+                    <h2 class="perfil">Juanito Perez</h2>
+                </div>
+            </nav>
+        </header>
+
+        <div class="calendario-contenedor">
+            <div class="calendario-header">
+                <button id="mes-anterior" class="btn-nav">&lt;</button>
+                <h2 id="mes-anio-titulo">Mayo 2026</h2>
+                <button id="mes-siguiente" class="btn-nav">&gt;</button>
+            </div>
+
+            <div class="dias-semana">
+                <div>Dom</div><div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div>
+            </div>
+
+            <div id="dias-calendario" class="dias-grid">
+                </div>
+        </div>
+
+        <script src="Scripts/Principal.js"></script>
     </body>
 </html>
