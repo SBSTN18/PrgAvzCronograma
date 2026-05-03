@@ -413,3 +413,9 @@ h2 {
     border-color: #cba6f7;
     box-shadow: 0 0 5px rgba(203, 166, 247, 0.5);
 }
+
+#mensaje-resultado {
+  display:none;
+    text-align:center;
+  font-size:1.3rem;
+}

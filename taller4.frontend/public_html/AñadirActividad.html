@@ -8,6 +8,7 @@
     </head>
     <body>
         <header>
+            <header>
             <nav class="barrasuperior" id="principal">
                 <div class="logo">
                     <img src="img/logo.png" alt="Logo de Organizador de Labores" class="logo-img">
@@ -16,7 +17,7 @@
                 <div class="menu-items">
                     <button class="menu-btn" id="Consultar">Consultar Actividades</button>
                     <button class="menu-btn" id="añadir">Añadir Actividad</button>
-                    <button class="menu-btn" id="info">Ajustes</button>
+                    <button class="menu-btn" id="ajustes">Ajustes</button>
                     
                 </div>
                 
@@ -30,7 +31,7 @@
         <h1 class="titulo">Crear Nueva Actividad</h1>
 
         <div class="activity-container">
-            <form id="create-activity-form" onsubmit="guardarActividad(event)">
+            <form id="create-activity-form">
                 <div class="form-group">
                     <label for="titulo">Título de la Actividad:</label>
                     <input type="text" id="titulo" name="titulo" placeholder="Ej. Limpiar la sala" required>
@@ -38,8 +39,8 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="tipo">Tipo de Actividad:</label>
-                        <select id="tipo" name="tipo" required>
+                        <label for="tipoActividad">Tipo de Actividad:</label>
+                        <select id="tipoActividad" name="tipoActividad" required>
                             <option value="">Selecciona un tipo</option>
                             <option value="Quehaceres y orden">Quehaceres y orden</option>
                             <option value="Limpieza profunda">Limpieza profunda</option>
@@ -49,8 +50,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="fecha">Fecha Límite:</label>
-                        <input type="date" id="fecha" name="fecha" required>
+                        <label for="fechaInicio">Fecha inicio:</label>
+                        <input type="date" id="fechaInicio" name="fechaInicio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fechaTerminacion">Fecha final:</label>
+                        <input type="date" id="fechaTerminacion" name="fechaTerminacion" required>
                     </div>
                 </div>
 
@@ -58,21 +64,27 @@
                     <label for="descripcion">Descripción:</label>
                     <textarea id="descripcion" name="descripcion" rows="4" placeholder="Escribe las instrucciones detalladas de la actividad..." required></textarea>
                 </div>
-
                 <div class="form-group">
-                    <label for="tutor">Asignada por (Tutor):</label>
-                    <input type="text" id="tutor" name="tutor" placeholder="Ej. Tutor Principal" required>
+                    <label for="idQuehacer">Id del que-hacer:</label>
+                    <input type="text" id="idQuehacer" name="idQuehacer" placeholder="Ej. Quehacer 1" required>
                 </div>
-
+                <div class="form-group">
+                    <label for="idTutor">Asignada por (Id del Tutor):</label>
+                    <input type="text" id="idTutor" name="idTutor" placeholder="Ej. Tutor Principal" required>
+                </div>
+                <div class="form-group">
+                    <label for="idHijo">Asignada a (Id del Hijo):</label>
+                    <input type="text" id="idHijo" name="idHijo" placeholder="Ej. Juan Pérez" required>
+                </div>
                 <div class="menu-items">
-                    <button type="submit" class="menu-btn">Guardar Actividad</button>
-                    <button type="button" class="menu-btn">Cancelar</button>
+                    <button type="button" class="menu-btn" id="guardar">Guardar Actividad</button>
+                    <button type="button" class="menu-btn" id="cancelar">Cancelar</button>
                 </div>
             </form>
         </div>
         <footer><br>
             <p>© 2026 Programacion avanzada. Universidad Distrital Francisco José de Caldas.</p>
         </footer>
-        <script src="Scripts/crear-actividad.js"></script>
+        <script src="Scripts/AñadirActividad.js"></script>
     </body>
 </html>

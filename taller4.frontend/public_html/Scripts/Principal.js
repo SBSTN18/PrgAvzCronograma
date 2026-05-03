@@ -1,49 +1,60 @@
-// Ejemplo de arreglo de actividades (en un futuro vendrán de tu backend o base de datos en memoria)
-const actividades = [
-    { fecha: "2026-05-05", titulo: "Limpiar sala" },
-    { fecha: "2026-05-10", titulo: "Hacer compras" }
+const MESES = [
+    "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+    "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
 ];
 
+// Datos fijos de prueba (sin conexión al backend)
+const actividades = [
+    { id: 1, titulo: "Limpiar la sala",     fechaTerminacion: "2026-05-03" },
+    { id: 2, titulo: "Lavar los platos",    fechaTerminacion: "2026-05-05" },
+    { id: 3, titulo: "Tender la cama",      fechaTerminacion: "2026-05-15" },
+    { id: 4, titulo: "Sacar la basura",     fechaTerminacion: "2026-05-12" },
+    { id: 5, titulo: "Preparar el desayuno",fechaTerminacion: "2026-05-20" }
+];
+
+let mesActual = new Date().getMonth();
+let anioActual = new Date().getFullYear();
+
 function generarCalendario(anio, mes) {
+    document.getElementById("mes-anio-titulo").textContent = `${MESES[mes]} ${anio}`;
+
     const contenedor = document.getElementById("dias-calendario");
-    contenedor.innerHTML = ""; // Limpiamos la cuadrícula
+    contenedor.innerHTML = "";
 
     const primerDia = new Date(anio, mes, 1).getDay();
     const totalDias = new Date(anio, mes + 1, 0).getDate();
 
-    // Rellenamos los espacios vacíos del inicio si el mes no empieza en lunes
     for (let i = 0; i < primerDia; i++) {
-        const celdaVacia = document.createElement("div");
-        celdaVacia.classList.add("dia-celda");
-        celdaVacia.style.backgroundColor = "transparent";
-        celdaVacia.style.border = "none";
-        contenedor.appendChild(celdaVacia);
+        const vacia = document.createElement("div");
+        vacia.classList.add("dia-celda");
+        vacia.style.cssText = "background:transparent; border:none;";
+        contenedor.appendChild(vacia);
     }
 
-    // Dibujamos los días del mes
     for (let dia = 1; dia <= totalDias; dia++) {
         const celda = document.createElement("div");
         celda.classList.add("dia-celda");
 
         const numero = document.createElement("span");
         numero.classList.add("dia-numero");
-        numero.innerText = dia;
+        numero.textContent = dia;
         celda.appendChild(numero);
 
-        // Formato de fecha para comparar (YYYY-MM-DD)
-        const mesFormateado = String(mes + 1).padStart(2, '0');
-        const diaFormateado = String(dia).padStart(2, '0');
-        const fechaStr = `${anio}-${mesFormateado}-${diaFormateado}`;
+        const mes2 = String(mes + 1).padStart(2, "0");
+        const dia2 = String(dia).padStart(2, "0");
+        const fechaDia = `${anio}-${mes2}-${dia2}`;
 
-        // Buscamos actividades para este día
-        const actividadesDelDia = actividades.filter(a => a.fecha === fechaStr);
+        const actividadesDelDia = actividades.filter(
+            a => a.fechaTerminacion === fechaDia
+        );
 
         actividadesDelDia.forEach(actividad => {
             const chip = document.createElement("button");
             chip.classList.add("actividad-btn");
-            chip.innerText = actividad.titulo;
+            chip.textContent = actividad.titulo;
 
             chip.addEventListener("click", function() {
+                sessionStorage.setItem("idActividad", actividad.id);
                 window.location.href = "Actividad.html";
             });
 
@@ -54,9 +65,16 @@ function generarCalendario(anio, mes) {
     }
 }
 
-// Inicializamos en Mayo de 2026
-document.addEventListener("DOMContentLoaded", function() {
-    generarCalendario(2026, 4); // El mes en JS va de 0 a 11
+document.getElementById("mes-anterior").addEventListener("click", function() {
+    mesActual--;
+    if (mesActual < 0) { mesActual = 11; anioActual--; }
+    generarCalendario(anioActual, mesActual);
+});
+
+document.getElementById("mes-siguiente").addEventListener("click", function() {
+    mesActual++;
+    if (mesActual > 11) { mesActual = 0; anioActual++; }
+    generarCalendario(anioActual, mesActual);
 });
 
 document.getElementById("añadir").addEventListener("click", function() {
@@ -65,4 +83,12 @@ document.getElementById("añadir").addEventListener("click", function() {
 
 document.getElementById("Consultar").addEventListener("click", function() {
     window.location.href = "Principal.html";
+});
+
+document.getElementById("ajustes").addEventListener("click", function() {
+    window.location.href = "Ajustes.html";
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    generarCalendario(anioActual, mesActual);
 });

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Ajustes de Usuario - Organizador De Labores</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/Style.css">
+    </head>
+    <body>
+        <header>
+            <nav class="barrasuperior" id="principal">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo de Organizador de Labores" class="logo-img">
+                </div>
+                
+                <div class="menu-items">
+                    <button class="menu-btn" id="Consultar">Consultar Actividades</button>
+                    <button class="menu-btn" id="añadir">Añadir Actividad</button>
+                    <button class="menu-btn" id="ajustes">Ajustes</button>
+                    
+                </div>
+                
+                <div class="botones">
+                    <img src="img/perfil.png" alt="Perfil" class="perfil-img">  
+                    <h2 class="perfil">Juanito Perez</h2>
+                </div>
+            </nav>
+        </header>
+        <h1 class="titulo">Ajustes de Usuario</h1>
+
+        <div class="activity-container">
+            <form id="user-settings-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Juanito Perez">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" placeholder="juanito.perez@example.com">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="rol">Rol en la plataforma:</label>
+                        <select id="rol" name="rol" required>
+                            <option value="tutor">Tutor</option>
+                            <option value="hijo">Hijo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="if_children">
+                        <label for="id-tutor">ID del Tutor:</label>
+                        <input type="text" id="id-tutor" name="id-tutor" placeholder="Ingresa tu ID de tutor">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Nueva Contraseña (dejar en blanco para no cambiar):</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••">
+                </div>
+
+                <div class="menu-items">
+                    <button type="button" class="menu-btn" id="back">Guardar Cambios</button>
+                    <button type="button" class="menu-btn" id="cancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <footer><br>
+            <p>© 2026 Programacion avanzada. Universidad Distrital Francisco José de Caldas.</p>
+        </footer>
+        <script src="Scripts/ajustes.js"></script>
+    </body>
+</html>

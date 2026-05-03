@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Modificar Actividad - Organizador De Labores</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/Style.css">
+    </head>
+    <body>
+        <header>
+            <nav class="barrasuperior" id="principal">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo de Organizador de Labores" class="logo-img">
+                </div>
+                
+                <div class="menu-items">
+                    <button class="menu-btn" id="Consultar" onclick="window.location.href='Principal.html'">Consultar Actividades</button>
+                    <button class="menu-btn" id="añadir" onclick="window.location.href='AñadirActividad.html'">Añadir Actividad</button>
+                    <button class="menu-btn" id="ajustes" onclick="window.location.href='Ajustes.html'">Ajustes</button>
+                </div>
+                
+                <div class="botones">
+                    <img src="img/perfil.png" alt="Perfil" class="perfil-img">  
+                    <h2 class="perfil">Juanito Perez</h2>
+                </div>
+            </nav>
+        </header>
+
+        <h1 class="titulo">Modificar Actividad</h1>
+
+        <div class="activity-container">
+            <form id="modificarForm">
+                <div class="form-group">
+                    <label for="modId">ID de la Actividad a modificar:</label>
+                    <input type="number" id="modId" placeholder="Ej. 1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modTitulo">Nuevo Título de la Actividad:</label>
+                    <input type="text" id="modTitulo" placeholder="Nuevo Título">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modTipoActividad">Tipo de Actividad:</label>
+                        <select id="modTipoActividad" name="modTipoActividad">
+                            <option value="">Selecciona un tipo</option>
+                            <option value="Quehaceres y orden">Quehaceres y orden</option>
+                            <option value="Limpieza profunda">Limpieza profunda</option>
+                            <option value="Cocina y alimentos">Cocina y alimentos</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modFechaInicio">Nueva Fecha de Inicio:</label>
+                        <input type="date" id="modFechaInicio">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" id="modFechaTerminacion">
+                        <label for="modFechaTerminacion">Nueva Fecha de Fin:</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modDescripcion">Nueva Descripción:</label>
+                    <textarea id="modDescripcion" rows="4" placeholder="Escribe la nueva descripción..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="modIdQuehacer">Nuevo ID del quehacer:</label>
+                    <input type="number" id="modIdQuehacer" placeholder="Nuevo ID Quehacer">
+                </div>
+
+                <div class="form-group">
+                    <label for="modIdTutor">Nuevo ID del Tutor asignador:</label>
+                    <input type="number" id="modIdTutor" placeholder="Nuevo ID Tutor">
+                </div>
+
+                <div class="form-group">
+                    <label for="modIdHijo">Nuevo ID del hijo asignado:</label>
+                    <input type="number" id="modIdHijo" placeholder="Nuevo ID Hijo">
+                </div>
+
+                <div class="menu-items">
+                    <button type="submit" class="menu-btn" id="modificarBtn">Guardar Cambios</button>
+                    <button type="button" class="menu-btn" id="cancelarBtn" onclick="history.back()">Cancelar</button>
+                </div>
+                <p id="mensaje-resultado" style="display:none; text-align:center; font-size:1.3rem;"></p>
+            </form>
+        </div>
+
+        <footer><br>
+            <p>© 2026 Programacion avanzada. Universidad Distrital Francisco José de Caldas.</p>
+        </footer>
+        <script src="Scripts/ModificarActividad.js"></script>
+    </body>
+</html>

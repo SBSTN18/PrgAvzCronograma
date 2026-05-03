@@ -15,6 +15,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+
+/**
+ * Entidad que representa una actividad del hogar.
+ * Contiene la información de la tarea asignada por un tutor
+ * a un hijo dentro de un quehacer específico.
+ *
+ * @version 1.0
+ */
 @Entity
 @Data
 @Table(name="actividades")
@@ -22,24 +30,40 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class Actividad {
 
+    /** Identificador único de la actividad. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idActividad;
     
+    /** Título descriptivo de la actividad. */
     @Column(name = "titulo", nullable = false, unique = false, length = 50)
     private String titulo;
+
+    /** Descripción detallada de lo que implica la actividad. */
     @Column(name="descripcion", nullable = false, unique = false, length = 50)
     private String descripcion;
+
+    /** Fecha en la que inicia la actividad. */
     @Column(name="fecha_inicio", nullable = false, unique = false)
     private LocalDate fechaInicio;
+
+    /** Fecha límite para completar la actividad. */
     @Column(name="fecha_terminacion", nullable = false, unique = false)
-    private LocalDate fechaTerminacion;  //LocalDate ayuda a definir fecha sin hora especifica
+    private LocalDate fechaTerminacion;
+
+     /** Categoría o tipo de la actividad (ej. Quehaceres y orden). */
     @Column(name="tipo_actividad", nullable = false, unique = false, length = 50)
     private String tipoActividad;
+
+    /** Identificador del quehacer al que pertenece esta actividad. */
     @Column(name="id_quehacer", nullable = false, unique = false)
-    private Long idQuehacer;  //Los Long son usados porque se recomiendan para almacenar valores altos en bases de datos sin desbordarse
+    private Long idQuehacer;
+
+    /** Identificador del tutor que asigna la actividad. */
     @Column(name="id_tutor", nullable = false, unique = false)
     private Long idTutor;
+
+    /** Identificador del hijo al que se le asigna la actividad. */
     @Column(name="id_hijo", nullable = false, unique = false)
     private Long idHijo;
 }
