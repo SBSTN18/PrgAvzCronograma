@@ -19,6 +19,10 @@ body {
   align-items: center;
 }
 
+.barrasuperior#principal {
+  background-color: #16022f;
+}
+
 .logo-img {
   height: 12rem;
   width: auto;
@@ -29,6 +33,7 @@ body {
     display: flex;
     gap: 1rem;
     align-items: center;
+    margin-left: 10rem;
 }
 
 .menu-btn {
@@ -198,13 +203,23 @@ footer {
   border: none;
 }
 
+.login-form#registerForm table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1rem 2rem;
+}
+
+#if_children {
+    display: none;
+}
+
 .calendario-contenedor {
     background-color: #100121;
     border: 1px solid rgba(203, 166, 247, 0.2);
     border-radius: 12px;
     padding: 2rem;
     max-width: 800px;
-    margin: 3rem auto;
+    margin: 2rem auto;
     color: #ffffff;
 }
 
@@ -279,4 +294,122 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.perfil {
+  color: #cba6f7;
+}
+
+.perfil-img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+h2 {
+  color: #16022f;
+  text-align: center;
+  max-width: 23rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.activity-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #16022f;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.05);
+}
+
+.activity-header h2 {
+    color: #cba6f7;
+    justify-self: center;
+    margin-bottom: 3rem;
+    font-size: 3em;
+}
+
+.activity-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    color: #cba6f7;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #cba6f7;
+    padding-bottom: 12px;
+}
+
+.activity-body {
+    margin-bottom: 2rem;
+}
+
+.activity-description {
+    color: #cba6f7;
+    font-size: 2em;
+}
+
+.activity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #cba6f7;
+    padding-top: 15px;
+    font-size: 0.95em;
+    color: #cba6f7;
+}
+
+.tutor-asign {
+    background-color: #cba6f7;
+    color: #16022f;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+#confirmar-eliminacion {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #cba6f7;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid rgba(203, 166, 247, 0.3);
+    border-radius: 6px;
+    font-size: 1.2rem;
+    color: #cba6f7;
+    background-color: #100121;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #cba6f7;
+    box-shadow: 0 0 5px rgba(203, 166, 247, 0.5);
 }

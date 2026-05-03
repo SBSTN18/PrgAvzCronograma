@@ -5,6 +5,8 @@
 package pa.taller4.Controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pa.taller4.Modelo.Actividad;
+import pa.taller4.Modelo.ActividadResponse;
 import pa.taller4.Service.ActividadService;
 
 @RestController
@@ -32,13 +35,34 @@ public class ActividadController {
     }
 
     @GetMapping
-    public List<Actividad> consultarTodas() {
-        return actividadService.consultarTodas();
+    public List<ActividadResponse> consultarTodas() {
+        return actividadService.consultarTodas().stream()
+                .map(a -> new ActividadResponse(
+                        a.getIdActividad(),
+                        a.getTitulo(),
+                        a.getDescripcion(),
+                        a.getTipoActividad(),
+                        a.getFechaInicio(),
+                        a.getFechaTerminacion(),
+                        a.getIdTutor(),
+                        a.getIdHijo()
+                ))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public Actividad consultarPorId(@PathVariable Long id) {
+    public ActividadResponse consultarPorId(@PathVariable Long id) {
         return actividadService.consultarPorId(id)
+                .map(a -> new ActividadResponse(
+                        a.getIdActividad(),
+                        a.getTitulo(),
+                        a.getDescripcion(),
+                        a.getTipoActividad(),
+                        a.getFechaInicio(),
+                        a.getFechaTerminacion(),
+                        a.getIdTutor(),
+                        a.getIdHijo()
+                ))
                 .orElseThrow(() -> new RuntimeException("Actividad no encontrada"));
     }
 

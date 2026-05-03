@@ -1,10 +1,76 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
-        <title>Organizador De Labores</title>
+        <title>Registrarse - Organizador De Labores</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/Style.css">
     </head>
     <body>
+        <header>
+            <nav class="barrasuperior" id="principal">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo de Organizador de Labores" class="logo-img">
+                </div>
+                
+                <div class="menu-items">
+                    <button class="menu-btn" id="inicio">Acerca De Nosotros</button>
+                    <button class="menu-btn" id="info">Accesos Rápidos</button>
+                    <button class="menu-btn" id="contacto">Contacto</button>
+                </div>
+                
+                <div class="menu-items">
+                    <button class="menu-btn" id="inicios">Iniciar Sesión</button>
+                    <button class="menu-btn" id="registro">Registrarse</button>
+                </div>
+            </nav>
+        </header>
+
+        <h1 class="titulo">Registrarse</h1>
+
+        <div class="login-container">
+            <form class="login-form" id="registerForm">
+                <table>
+                    <tr>
+                        <td><label for="nombre">Nombre y Apellidos:</label></td>
+                        <td><input type="text" id="nombre" name="nombre" required></td>
+                        <td><label for="username">Nombre de Usuario:</label></td>
+                        <td><input type="text" id="username" name="username" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Correo Electrónico:</label></td>
+                        <td><input type="email" id="email" name="email" required></td>
+                        <td><label for="password">Contraseña:</label></td>
+                        <td><input type="password" id="password" name="password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="confirmPassword">Confirmar Contraseña:</label></td>
+                        <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
+                        <td><label for="rol">Rol:</label></td>
+                        <td>
+                            <select id="rol" name="rol" required>
+                                <option value="">Selecciona tu rol</option>
+                                <option value="tutor">Tutor</option>
+                                <option value="hijo">Hijo</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="if_children">
+                        <td><label for="id-tutor">ID del Tutor:</label></td>
+                        <td><input type="text" id="id-tutor" name="id-tutor" required></td>
+                        <td colspan="2"><label for="info">Asegurese de ingresar el ID correcto del tutor.</label></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="btn2">
+                            <button type="submit" class="btn" id="registerbtn">Registrarse</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div><br><br>  
+        <footer><br>
+            <p>© 2026 Programacion avanzada. Universidad Distrital Francisco José de Caldas.</p>
+        </footer>
+        <script src="Scripts/Registrar.js"></script>
     </body>
 </html>

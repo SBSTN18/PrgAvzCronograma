@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Detalle de la Actividad - Organizador De Labores</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/Style.css">
+        <link rel="stylesheet" href="css/actividad.css">
+    </head>
+    <body>
+        <header>
+            <nav class="barrasuperior" id="principal">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Logo de Organizador de Labores" class="logo-img">
+                </div>
+                
+                <div class="menu-items">
+                    <button class="menu-btn" id="Consultar">Consultar Actividades</button>
+                    <button class="menu-btn" id="añadir">Añadir Actividad</button>
+                    <button class="menu-btn" id="info">Ajustes</button>
+                    
+                </div>
+                
+                <div class="botones">
+                    <img src="img/perfil.png" alt="Perfil" class="perfil-img">  
+                    <h2 class="perfil">Juanito Perez</h2>
+                </div>
+            </nav>
+        </header>
+
+        <h1 class="titulo">Detalles de la Actividad</h1>
+
+        <div class="activity-container">
+            <div class="activity-header">
+                <h2 id="activity-title">Tender la cama</h2>
+                <div class="activity-meta">
+                    <span id="activity-type"><strong>Tipo:</strong> Labor</span>
+                    <span id="activity-date"><strong>Fecha límite:</strong>04/06/2026 </span>
+                </div>
+            </div>
+            
+            <div class="activity-body">
+                <p class="activity-description" id="activity-description">
+                    No te olvides de tender la cama cada mañana. Es una tarea sencilla que ayuda a mantener
+                     tu habitación ordenada y a empezar el día con una sensación de logro. Además, 
+                     una cama bien hecha puede mejorar la apariencia de tu espacio y hacer que 
+                     te sientas más cómodo al descansar por la noche. ¡Hazlo parte de tu rutina diaria y 
+                     verás cómo mejora tu ambiente!
+                </p>
+            </div>
+            
+            <div class="activity-footer">
+                <div>
+                    <span><strong>Asignada por:</strong> </span>
+                    <span class="tutor-asign" id="actividad-tutor">Papá</span>
+                </div>
+                <div class="menu-items">
+                    <button class="menu-btn" id="back">Volver atrás</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="editar-actividad">
+            <div class="btn2">
+                <button class="btn" id="editar">Editar Actividad</button>
+                <button class="btn" id="eliminar">Eliminar Actividad</button>
+            </div><br>
+            
+        </div>
+
+        <div id="confirmar-eliminacion">
+            <h1>¿Estás seguro de que deseas eliminar esta actividad?</h1>
+             <div class="btn2">
+                <button class="btn" id="confirmar-eliminar">Sí, eliminar</button>
+                <button class="btn" id="cancelar-eliminacion">No, cancelar</button>
+            </div>
+        </div>
+
+        <footer><br>
+            <p>© 2026 Programacion avanzada. Universidad Distrital Francisco José de Caldas.</p>
+        </footer>
+        <script src="Scripts/Actividad.js"></script>
+    </body>
+</html>

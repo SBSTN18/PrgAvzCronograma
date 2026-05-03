@@ -1,9 +1,12 @@
 document.getElementById("loginbtn").addEventListener("click", function(event) {
     event.preventDefault();
-    if (document.getElementById("role").value === "tutor") {
-        window.location.href = "Principal.tutor.html";
-    }else {
-        window.location.href = "Principal.html";
-    }
+    window.location.href = "Principal.html";
     
+});
+document.getElementById("inicios").addEventListener("click", () => {
+  window.location.href = "Login.html";
+});
+
+document.getElementById("registro").addEventListener("click", () => {
+  window.location.href = "Registrar.html";
 });

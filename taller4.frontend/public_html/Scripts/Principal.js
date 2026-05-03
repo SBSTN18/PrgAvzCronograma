@@ -58,3 +58,11 @@ function generarCalendario(anio, mes) {
 document.addEventListener("DOMContentLoaded", function() {
     generarCalendario(2026, 4); // El mes en JS va de 0 a 11
 });
+
+document.getElementById("añadir").addEventListener("click", function() {
+    window.location.href = "AñadirActividad.html";
+});
+
+document.getElementById("Consultar").addEventListener("click", function() {
+    window.location.href = "Principal.html";
+});
