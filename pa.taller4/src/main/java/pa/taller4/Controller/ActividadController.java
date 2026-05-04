@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pa.taller4.Controller;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,13 +18,15 @@ import pa.taller4.Service.ActividadService;
 /**
  * Controlador REST para la gestión de actividades del hogar.
  * Expone los endpoints para crear, consultar, modificar y eliminar actividades.
- * Maneja los errores devolviendo respuestas JSON con código HTTP apropiado.
+ * Los errores son manejados por el manejador global de excepciones.
  *
+ * @author [tu nombre]
  * @version 1.0
  */
 @RestController
 @RequestMapping("/actividades")
 public class ActividadController {
+
     /** Servicio que contiene la lógica de negocio de las actividades. */
     private final ActividadService actividadService;
 
@@ -48,54 +43,24 @@ public class ActividadController {
      * Crea una nueva actividad en la base de datos.
      *
      * @param actividad objeto con los datos de la actividad a crear
-     * @return la actividad creada con código 201, o error 400 si falla
+     * @return la actividad creada con código 201
      */
     @PostMapping
-    public ResponseEntity<?> crear(@RequestBody Actividad actividad) {
-        try {
-            Actividad nueva = actividadService.crearActividad(actividad);
-            return new ResponseEntity<>(nueva, HttpStatus.CREATED);
-        } catch (Exception ex) {
-            Map<String, Object> body = Map.of(
-                "error", "BAD_REQUEST",
-                "message", "Error al crear la actividad: " + ex.getMessage(),
-                "status", 400
-            );
-            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-        }
-    }   
+    public ResponseEntity<ActividadResponse> crear(@RequestBody Actividad actividad) {
+        ActividadResponse nueva = actividadService.crearActividad(actividad);
+        return new ResponseEntity<>(nueva, HttpStatus.CREATED);
+    }
 
     /**
      * Consulta todas las actividades registradas en la base de datos.
      *
-     * @return lista de actividades con código 200, o error 500 si falla
+     * @return lista de actividades con código 200
      */
     @GetMapping
-    public ResponseEntity<?> consultarTodas() {
-        try {
-            List<ActividadResponse> lista = actividadService.consultarTodas().stream()
-                .map(a -> new ActividadResponse(
-                    a.getIdActividad(),
-                    a.getTitulo(),
-                    a.getDescripcion(),
-                    a.getTipoActividad(),
-                    a.getFechaInicio(),
-                    a.getFechaTerminacion(),
-                    a.getIdTutor(),
-                    a.getIdHijo()
-                ))
-                .collect(Collectors.toList());
-            return ResponseEntity.ok(lista);
-        } catch (Exception ex) {
-            Map<String, Object> body = Map.of(
-                "error", "INTERNAL_ERROR",
-                "message", "Error al consultar actividades",
-                "status", 500
-            );
-            return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<List<ActividadResponse>> consultarTodas() {
+        List<ActividadResponse> lista = actividadService.consultarTodas();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
     }
-
 
     /**
      * Consulta una actividad específica por su identificador.
@@ -104,77 +69,32 @@ public class ActividadController {
      * @return la actividad encontrada con código 200, o error 404 si no existe
      */
     @GetMapping("/{id}")
-    public ResponseEntity<?> consultarPorId(@PathVariable Long id) {
-        try {
-            ActividadResponse a = actividadService.consultarPorId(id)
-                .map(act -> new ActividadResponse(
-                    act.getIdActividad(),
-                    act.getTitulo(),
-                    act.getDescripcion(),
-                    act.getTipoActividad(),
-                    act.getFechaInicio(),
-                    act.getFechaTerminacion(),
-                    act.getIdTutor(),
-                    act.getIdHijo()
-                ))
-                .orElseThrow(() -> new RuntimeException("Actividad no encontrada con id: " + id));
-            return ResponseEntity.ok(a);
-        } catch (RuntimeException ex) {
-            Map<String, Object> body = Map.of(
-                "error", "NOT_FOUND",
-                "message", ex.getMessage(),
-                "status", 404
-            );
-            return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<ActividadResponse> consultarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(actividadService.consultarPorId(id));
     }
-
 
     /**
      * Modifica una actividad existente con los nuevos datos proporcionados.
+     * Solo se actualizan los campos que no estén vacíos.
      *
      * @param id identificador de la actividad a modificar
      * @param actividad objeto con los nuevos datos
      * @return la actividad modificada con código 200, o error 404 si no existe
      */
     @PutMapping("/{id}")
-    public ResponseEntity<?> modificar(@PathVariable Long id, @RequestBody Actividad actividad) {
-        try {
-            Actividad modificada = actividadService.modificarActividad(id, actividad);
-            return ResponseEntity.ok(modificada);
-        } catch (RuntimeException ex) {
-            Map<String, Object> body = Map.of(
-                "error", "NOT_FOUND",
-                "message", ex.getMessage(),
-                "status", 404
-            );
-            return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<ActividadResponse> modificar(@PathVariable Long id, @RequestBody Actividad actividad) {
+        return ResponseEntity.ok(actividadService.modificarActividad(id, actividad));
     }
-
 
     /**
      * Elimina una actividad de la base de datos por su identificador.
      *
      * @param id identificador de la actividad a eliminar
-     * @return mensaje de confirmación con código 200, o error 404 si no existe
+     * @return respuesta vacía con código 204
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> borrar(@PathVariable Long id) {
-        try {
-            actividadService.borrarActividad(id);
-            Map<String, Object> body = Map.of(
-                "message", "Actividad eliminada correctamente",
-                "status", 200
-            );
-            return ResponseEntity.ok(body);
-        } catch (RuntimeException ex) {
-            Map<String, Object> body = Map.of(
-                "error", "NOT_FOUND",
-                "message", "No existe actividad con id: " + id,
-                "status", 404
-            );
-            return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Void> borrar(@PathVariable Long id) {
+        actividadService.borrarActividad(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
